@@ -1,59 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:id="@+id/item_forecast"
-    android:foreground="@drawable/bg_white"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="13dp"
+    android:paddingBottom="13dp">
+
+    <!-- 日期 -->
+    <TextView
+        android:id="@+id/tv_daysDate"
+        android:layout_width="0dp"
+        android:layout_weight="1.2"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#CCFFFFFF"
+        android:textSize="13sp" />
+
+    <!-- 星期 -->
+    <TextView
+        android:id="@+id/tv_week"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#88FFFFFF"
+        android:textSize="13sp" />
+
+    <!-- 天气图标 -->
+    <ImageView
+        android:id="@+id/iv_daysIcon"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@mipmap/icon_100"
+        android:alpha="0.85" />
+
+    <!-- 最低温 / 最高温 -->
     <LinearLayout
-        android:gravity="center_vertical"
-        android:padding="12sp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <!--日期-->
-        <TextView
-            android:id="@+id/tv_daysDate"
-            android:textSize="14sp"
-            android:textColor="#FFF"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <!--天气描述  文字 隐藏-->
-        <TextView
-            android:id="@+id/tv_week"
-            android:textSize="14sp"
-            android:textColor="#FFF"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <!--天气描述  图标-->
-        <ImageView
-            android:id="@+id/iv_daysIcon"
-            android:background="@mipmap/icon_100"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:layout_height="wrap_content"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal">
 
-        <!--最低温、最高温-->
-        <LinearLayout
-            android:gravity="right"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tv_daysMin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-            <TextView
-                android:id="@+id/tv_daysMin"
-                android:textSize="14sp"
-                android:textColor="#FFF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:fontFamily="sans-serif-light"
+            android:textColor="#88FFFFFF"
+            android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/tv_daysMax"
-                android:textSize="14sp"
-                android:textColor="#FFF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:fontFamily="sans-serif-light"
+            android:text="/"
+            android:textColor="#55FFFFFF"
+            android:textSize="13sp" />
 
+        <TextView
+            android:id="@+id/tv_daysMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="#CCFFFFFF"
+            android:textSize="13sp" />
     </LinearLayout>
+
 </LinearLayout>

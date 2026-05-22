@@ -3,28 +3,29 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:orientation="vertical">
 
-    <!--时间-->
     <TextView
         android:id="@+id/tv_time"
-        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="上午10:00"
-        android:textColor="#FFF"
-        android:textSize="12sp" />
+        android:fontFamily="sans-serif-light"
+        android:text="10:00"
+        android:textColor="#88FFFFFF"
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/tv_minRainInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="6dp"
         android:gravity="center"
+        android:fontFamily="sans-serif-light"
         android:text="0.1  雨"
-        android:textColor="#FFF"
+        android:textColor="#CCFFFFFF"
         android:textSize="12sp" />
 </LinearLayout>

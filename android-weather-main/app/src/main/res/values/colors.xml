@@ -58,6 +58,16 @@
     <color name="search_light_un_color">#666666</color>
     <color name="slategray">#708090</color><!--灰石色 -->
 
+    <!-- 新设计：Glassmorphism 主题 -->
+    <color name="glass_white_light">#33FFFFFF</color>
+    <color name="glass_white_mid">#55FFFFFF</color>
+    <color name="glass_border">#44FFFFFF</color>
+    <color name="glass_text_primary">#FFFFFFFF</color>
+    <color name="glass_text_secondary">#CCFFFFFF</color>
+    <color name="glass_text_hint">#88FFFFFF</color>
+    <color name="glass_text_muted">#66FFFFFF</color>
+    <color name="glass_divider">#33FFFFFF</color>
+
     <color name="about_bg_color">#50A0FF</color>
     <color name="about_bg_color_2">#002C46</color>
     <color name="blue">#597EF7</color>
