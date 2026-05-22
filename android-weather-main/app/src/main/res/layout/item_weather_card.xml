@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical">
@@ -9,7 +8,11 @@
     <com.example.weather.view.WeatherView
         android:id="@+id/WeatherView"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="20dp"
-        app:msrc="@mipmap/img_weather_bg" />
+        android:layout_height="90dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="0dp"
+        app:msrc="@mipmap/img_weather_bg"
+        xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
 </LinearLayout>

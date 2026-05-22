@@ -2,21 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="match_parent"
-    android:layout_marginBottom="30dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginRight="0dp"
     android:clickable="true"
+    android:focusable="true"
     android:padding="12dp">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="android:src=&quot;@mipmap/icon_wind_scale&quot;" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_transparent_12"
+        android:background="@drawable/glass_card_bg"
         android:overScrollMode="never">
 
         <LinearLayout
@@ -24,33 +19,37 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="4dp">
+            android:padding="20dp">
 
+            <!-- 日期区域 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp">
+                android:paddingTop="4dp"
+                android:paddingBottom="16dp">
 
                 <TextView
                     android:id="@+id/tv_daysMoreDate1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:fontFamily="sans-serif-thin"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/tv_daysMoreDate2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    android:letterSpacing="0.06"
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="12sp" />
             </LinearLayout>
 
-
-            <!--最高温和最低温-->
+            <!-- 温度范围 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,495 +60,551 @@
                     android:id="@+id/tv_daysMoreMin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:typeface="sans" />
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#88FFFFFF"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" ~ "
-                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-light"
+                    android:text=" · "
+                    android:textColor="#55FFFFFF"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tv_daysMoreMax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <!-- 分隔线 -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:layout_margin="12dp"
-                android:background="@color/white" />
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/divider_white" />
 
+            <!-- 白天标签 -->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="白天天气状况"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:fontFamily="sans-serif-light"
+                android:letterSpacing="0.08"
+                android:paddingBottom="10dp"
+                android:text="白天"
+                android:textColor="#88FFFFFF"
+                android:textSize="11sp" />
 
-            <!--白天-->
+            <!-- 白天：图标 + 描述 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_dayIcon"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:alpha="0.9"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/tv_dayText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- 白天风力数据 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <!--气候图标描述-->
-                    <ImageView
-                        android:id="@+id/iv_dayIcon"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:scaleType="fitXY" />
-                    <TextView
-                        android:id="@+id/tv_dayText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:src="@mipmap/icon_wind_360" />
+
+                        <TextView
+                            android:id="@+id/tv_dayWind360"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:src="@mipmap/icon_wind_dir" />
+
+                        <TextView
+                            android:id="@+id/tv_dayWindDir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="8dp">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <!--风向360角度-->
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:padding="1dp"
+                            android:src="@mipmap/icon_wind_scale" />
+
+                        <TextView
+                            android:id="@+id/tv_dayWindScale"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12dp"
-                            android:paddingRight="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@mipmap/icon_wind_360" />
-
-                            <TextView
-                                android:id="@+id/tv_dayWind360"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                        <!--风向-->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12dp"
-                            android:paddingRight="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@mipmap/icon_wind_dir" />
-
-                            <TextView
-                                android:id="@+id/tv_dayWindDir"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp">
-                        <!--风力-->
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:src="@mipmap/icon_wind_speed" />
+
+                        <TextView
+                            android:id="@+id/tv_dayWindSpeed"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12dp"
-                            android:paddingRight="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:padding="2dp"
-                                android:src="@mipmap/icon_wind_scale" />
-
-                            <TextView
-                                android:id="@+id/tv_dayWindScale"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                        <!--风速-->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12dp"
-                            android:paddingRight="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@mipmap/icon_wind_speed" />
-
-                            <TextView
-                                android:id="@+id/tv_dayWindSpeed"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- 分隔线 -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:layout_margin="12dp"
-                android:background="@color/white" />
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/divider_white" />
 
+            <!-- 夜间标签 -->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="夜间天气状况"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:fontFamily="sans-serif-light"
+                android:letterSpacing="0.08"
+                android:paddingBottom="10dp"
+                android:text="夜间"
+                android:textColor="#88FFFFFF"
+                android:textSize="11sp" />
 
-            <!--夜间-->
-            <!--白天-->
+            <!-- 夜间：图标 + 描述 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_nightIcon"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:alpha="0.9"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/tv_nightText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- 夜间风力数据 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <!--气候图标描述-->
-                    <ImageView
-                        android:id="@+id/iv_nightIcon"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:scaleType="fitXY" />
-                    <!--气候文字描述-->
-                    <TextView
-                        android:id="@+id/tv_nightText"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:src="@mipmap/icon_wind_360" />
+
+                        <TextView
+                            android:id="@+id/tv_nightWind360"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:src="@mipmap/icon_wind_dir" />
+
+                        <TextView
+                            android:id="@+id/tv_nightWindDir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="8dp">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <!--风向360角度-->
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:padding="1dp"
+                            android:src="@mipmap/icon_wind_scale" />
+
+                        <TextView
+                            android:id="@+id/tv_nightWindScale"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12dp"
-                            android:paddingRight="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@mipmap/icon_wind_360" />
-
-                            <TextView
-                                android:id="@+id/tv_nightWind360"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                        <!--风向-->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12sp"
-                            android:paddingRight="12sp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@mipmap/icon_wind_dir" />
-
-                            <TextView
-                                android:id="@+id/tv_nightWindDir"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp">
-                        <!--风力-->
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:alpha="0.6"
+                            android:src="@mipmap/icon_wind_speed" />
+
+                        <TextView
+                            android:id="@+id/tv_nightWindSpeed"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12dp"
-                            android:paddingRight="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:padding="2dp"
-                                android:src="@mipmap/icon_wind_scale" />
-
-                            <TextView
-                                android:id="@+id/tv_nightWindScale"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                        <!--风速-->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="12dp"
-                            android:paddingRight="12dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@mipmap/icon_wind_speed" />
-
-                            <TextView
-                                android:id="@+id/tv_nightWindSpeed"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
-                        </LinearLayout>
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="11sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- 分隔线 -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:layout_margin="12dp"
-                android:background="@color/white" />
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/divider_white" />
 
+            <!-- 详细气象数据 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
-                <!--云量-->
+                android:orientation="vertical">
+
+                <!-- 云量 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="云量"
-                        android:textColor="@color/white" />
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:alpha="0.6"
                         android:src="@mipmap/icon_cloud" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="云量"
+                        android:textColor="#88FFFFFF"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_cloud"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@color/white" />
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <!--紫外线强度-->
+
+                <!-- 紫外线 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="紫外线"
-                        android:textColor="@color/white" />
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:alpha="0.6"
                         android:src="@mipmap/icon_uv_index" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="紫外线"
+                        android:textColor="#88FFFFFF"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_uvIndex"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@color/white" />
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <!--能见度-->
+
+                <!-- 能见度 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="20dp"
-                        android:gravity="center_vertical"
-                        android:text="能见度"
-                        android:textColor="@color/white" />
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:alpha="0.6"
                         android:src="@mipmap/icon_vis" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="能见度"
+                        android:textColor="#88FFFFFF"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_vis"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@color/white" />
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <!--降水量-->
+
+                <!-- 降水量 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="降水量"
-                        android:textColor="@color/white" />
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:alpha="0.6"
                         android:src="@mipmap/icon_precip" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="降水量"
+                        android:textColor="#88FFFFFF"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_precip"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@color/white" />
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <!--相对湿度-->
+
+                <!-- 相对湿度 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="相对湿度"
-                        android:textColor="@color/white" />
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:alpha="0.6"
                         android:src="@mipmap/icon_humidity" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="相对湿度"
+                        android:textColor="#88FFFFFF"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_humidity"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@color/white" />
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <!--大气压强-->
+
+                <!-- 大气压强 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="大气压强"
-                        android:textColor="@color/white" />
+                    android:gravity="center_vertical"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:alpha="0.6"
                         android:src="@mipmap/icon_pressure" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="大气压强"
+                        android:textColor="#88FFFFFF"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_pressure"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@color/white" />
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

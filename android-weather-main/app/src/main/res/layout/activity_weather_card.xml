@@ -4,49 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bg"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".WeatherCardActivity">
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:contentInsetStart="0dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        <ImageButton
-            android:id="@+id/btn_back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="4dp"
-            android:background="@drawable/selector_bg_img"
-            android:padding="12dp"
-            android:src="@mipmap/icon_return_white" />
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+    <!-- 遮罩 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#44000000"
+        android:orientation="vertical">
+
+        <!-- 顶部工具栏 -->
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:text="我的城市" />
-        <ImageView
-            android:id="@+id/iv_addCity"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="right"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/selector_bg_img"
-            android:padding="14dp"
-            android:src="@mipmap/icon_add"
-            />
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-    </androidx.appcompat.widget.Toolbar>
-    <androidx.recyclerview.widget.RecyclerView
-        android:overScrollMode="never"
-        android:id="@+id/weather_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/glass_card_dark"
+                android:padding="10dp"
+                android:src="@mipmap/icon_return_white" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-light"
+                android:letterSpacing="0.05"
+                android:text="我的城市"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/iv_addCity"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="end"
+                android:background="@drawable/glass_card_dark"
+                android:padding="12dp"
+                android:src="@mipmap/icon_add" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- 城市卡片列表 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weather_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="12dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
 </LinearLayout>

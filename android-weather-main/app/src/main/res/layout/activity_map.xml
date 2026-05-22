@@ -7,35 +7,39 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.weather.MapActivity">
 
+    <!-- 地图全屏 -->
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:clickable="true" />
-    <!--顶部搜索布局-->
+
+    <!-- 返回按钮 -->
     <ImageView
         android:id="@+id/back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/glass_card_bg"
         android:padding="12dp"
         android:src="@drawable/blue_back" />
 
+    <!-- 搜索栏（右侧浮动，可展开） -->
     <LinearLayout
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:gravity="end"
         android:paddingLeft="12dp"
-        android:paddingTop="2dp"
-        android:paddingRight="48dp">
+        android:paddingTop="12dp"
+        android:paddingRight="12dp">
 
         <RelativeLayout
             android:id="@+id/lay_search"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="right"
-            android:background="@drawable/shape_search_bg">
+            android:layout_gravity="end"
+            android:background="@drawable/glass_map_search">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,8 +49,8 @@
 
                 <ImageView
                     android:id="@+id/iv_search"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:padding="6dp"
                     android:src="@mipmap/icon_search" />
 
@@ -57,19 +61,21 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="8"
+                    android:fontFamily="sans-serif-light"
                     android:hint="输入城市名"
                     android:imeOptions="actionSearch"
                     android:padding="4dp"
                     android:singleLine="true"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_2"
+                    android:textColorHint="#88000000"
                     android:textCursorDrawable="@drawable/cursor_style"
                     android:textSize="14sp"
                     android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/iv_close"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:padding="8dp"
                     android:src="@mipmap/icon_close"
                     android:visibility="gone" />
@@ -77,162 +83,206 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <!-- 底部天气信息面板 -->
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/weather_layout">
+        android:id="@+id/weather_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/shape_blue_8"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/glass_map_panel"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="20dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!--城市-->
-                <TextView
-                    android:id="@+id/tv_city"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="城市"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+            <!-- 城市名 -->
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:letterSpacing="0.05"
+                android:text="城市"
+                android:textColor="#CCFFFFFF"
+                android:textSize="14sp" />
 
-            </RelativeLayout>
-
-            <!--主要天气数据-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!--温度-->
-                <TextView
-                    android:id="@+id/tv_temperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0°"
-                    android:textColor="@color/white"
-                    android:textSize="60sp" />
-                <!--天气状态的图文显示、空气质量、风力-->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <!--天气状态的图文显示-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical">
-                        <!--天气状态的文字描述-->
-                        <TextView
-                            android:id="@+id/tv_weather_state"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="天气状态"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_14" />
-                        <!--天气状况图片描述-->
-                        <ImageView
-                            android:id="@+id/iv_weather"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_marginLeft="12dp" />
-                    </LinearLayout>
-
-                    <!--空气质量、风力-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-                        <!--空气质量-->
-                        <TextView
-                            android:id="@+id/tv_air"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/shape_purple"
-                            android:padding="2dp"
-                            android:text="AQI 状态"
-                            android:textColor="@color/purple"
-                            android:textSize="14sp" />
-
-                        <!--风信息描述-->
-                        <TextView
-                            android:id="@+id/tv_wind"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="12dp"
-                            android:text="风向风力"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp_14" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!--其他相关数据显示-->
+            <!-- 温度 + 天气状态 + 空气质量 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <!-- 大温度 -->
+                <TextView
+                    android:id="@+id/tv_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="--°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="56sp" />
+
+                <!-- 右侧：天气文字 + 图标 + 空气质量 + 风 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_weather_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:text="天气状态"
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_weather"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_marginLeft="10dp"
+                            android:alpha="0.85" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_air"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/glass_card_dark"
+                            android:fontFamily="sans-serif-light"
+                            android:padding="4dp"
+                            android:text="AQI"
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_wind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="sans-serif-light"
+                            android:text="风向风力"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 分隔线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/divider_white" />
+
+            <!-- 能见度 / 湿度 / 大气压 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <!--紫外线-->
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="能见度"
-                    android:textColor="@color/white_8" />
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_Vis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:text=" "
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="能见度"
+                        android:textColor="#66FFFFFF"
+                        android:textSize="11sp" />
 
-                <!--湿度-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="湿度"
-                    android:textColor="@color/white_8" />
+                    <TextView
+                        android:id="@+id/tv_Vis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="--"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_humidity"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:text=" "
-                    android:textColor="@color/white" />
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
-                <!--大气压-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="大气压"
-                    android:textColor="@color/white_8" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="湿度"
+                        android:textColor="#66FFFFFF"
+                        android:textSize="11sp" />
 
-                <TextView
-                    android:id="@+id/tv_pressure"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tv_humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="--"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:text=" "
-                    android:textColor="@color/white" />
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="大气压"
+                        android:textColor="#66FFFFFF"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_pressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="--"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+
 </RelativeLayout>
